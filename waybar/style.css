@@ -1,0 +1,90 @@
+/* Flat olive theme — matches ~/.config/quickshell/Theme.qml */
+@define-color bg     rgba(15, 17, 14, 0.92);
+@define-color border #2c3127;
+@define-color fg     #d0d0c4;
+@define-color dim    #7a7d6f;
+@define-color accent #a7b86d;
+@define-color warm   #d8a657;
+@define-color red    #e67e80;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", monospace;
+    font-size: 11px;
+    min-height: 0;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: @bg;
+    color: @fg;
+    border-bottom: 1px solid @border;
+}
+
+tooltip {
+    background: @bg;
+    border: 1px solid @border;
+}
+
+/* ===== Workspaces: square boxes ===== */
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    color: @fg;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 0 7px;
+    margin: 3px 1px;
+    box-shadow: none;
+}
+
+#workspaces button:hover {
+    background: @border;
+}
+
+#workspaces button.active {
+    border-color: @accent;
+    color: @accent;
+}
+
+#workspaces button.urgent {
+    border-color: @red;
+    color: @red;
+}
+
+/* ===== Center: date/time box (click opens the side panel) ===== */
+#clock {
+    color: @fg;
+    border: 1px solid @border;
+    padding: 0 10px;
+    margin: 2px 0;
+}
+
+#clock:hover {
+    border-color: @accent;
+    color: @accent;
+}
+
+/* ===== Right modules: plain text, separated by spacing ===== */
+#mpris,
+#pulseaudio,
+#network,
+#custom-bluetooth,
+#power-profiles-daemon,
+#battery {
+    color: @dim;
+    padding: 0 8px;
+}
+
+#mpris          { color: @accent; }
+#mpris.paused   { color: @dim; }
+#pulseaudio     { color: @fg; }
+#language       { color: @accent; padding: 0 8px; font-weight: bold; }
+#battery        { color: @fg; margin-right: 4px; }
+
+#battery.charging,
+#battery.plugged  { color: @accent; }
+#battery.warning:not(.charging)  { color: @warm; }
+#battery.critical:not(.charging) { color: @red; }
+#network.disconnected { color: @red; }

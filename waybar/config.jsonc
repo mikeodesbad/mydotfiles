@@ -1,0 +1,87 @@
+// -*- mode: jsonc -*-
+{
+    "height": 24,
+    "spacing": 0,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "mpris",
+        "hyprland/language",
+        "pulseaudio",
+        "network",
+        "custom/bluetooth",
+        "power-profiles-daemon",
+        "battery"
+    ],
+
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+
+    "mpris": {
+        "format": "{player_icon} {title}",
+        "format-paused": "{player_icon} <i>{title}</i>",
+        "max-length": 30,
+        "player-icons": { "default": "󰎆" }
+    },
+
+    "hyprland/language": {
+        "format-en": "EN",
+        "format-ru": "RU"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-icons": {
+            "headphone": "",
+            "headset": "󰋎",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰖪 offline",
+        "tooltip-format": "{ifname} via {gwaddr}\nSignal: {signalStrength}%",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "custom/bluetooth": {
+        "format": "",
+        "tooltip-format": "Open Bluetooth Manager",
+        "on-click": "blueman-manager"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "format-icons": {
+            "default": "󰓅",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰾆"
+        }
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+    },
+
+    "clock": {
+        "format": "{:%a %b %d  %H:%M}",
+        "on-click": "qs ipc call panel toggle",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
+}
